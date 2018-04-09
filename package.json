@@ -15,5 +15,17 @@
   "bugs": {
     "url": "https://github.com/missxiaolin/react-project/issues"
   },
-  "homepage": "https://github.com/missxiaolin/react-project#readme"
+  "homepage": "https://github.com/missxiaolin/react-project#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "html-webpack-plugin": "^2.30.1",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  }
 }
