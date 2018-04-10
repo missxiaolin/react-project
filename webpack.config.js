@@ -10,6 +10,10 @@ module.exports = {
         publicPath: '/',
         filename: 'js/app.js'
     },
+    devServer: {
+        // 端口号
+        // props: 8086
+    },
     module: {
         rules: [
             {
@@ -80,6 +84,4 @@ module.exports = {
             filename: 'js/base.js'
         })
     ],
-    devServer: {
-    },
 };
