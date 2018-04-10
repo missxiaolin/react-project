@@ -39,14 +39,26 @@ module.exports = {
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
-                  {
-                    loader: 'url-loader',
-                    options: {
-                      limit: 8192
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
                     }
-                  }
                 ]
-              }
+            },
+            // 字体
+            {
+                test: /\.(woff|woff2|eot|ttf|otf|svg)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
+            }
         ]
     },
     plugins: [

@@ -841,12 +841,19 @@ __webpack_require__(25);
 
 __webpack_require__(26);
 
+__webpack_require__(27);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(
-  'h1',
+  'div',
   null,
-  'Hello, world!'
+  _react2.default.createElement('i', { className: 'fa fa-address-book' }),
+  _react2.default.createElement(
+    'h1',
+    null,
+    'Hello, world!'
+  )
 ), document.getElementById('app'));
 
 /***/ }),
@@ -19464,6 +19471,12 @@ module.exports = camelize;
 
 /***/ }),
 /* 26 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
