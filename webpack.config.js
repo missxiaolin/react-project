@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
@@ -6,7 +7,8 @@ module.exports = {
     entry: './src/app.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'app.js'
+        publicPath: '/',
+        filename: 'js/app.js'
     },
     module: {
         rules: [
@@ -42,7 +44,9 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192
+                            limit: 8192,
+                            // 资源文件夹
+                            name: 'resource/[name].[ext]'
                         }
                     }
                 ]
@@ -54,7 +58,9 @@ module.exports = {
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 8192
+                            limit: 8192,
+                            // 资源文件夹
+                            name: 'resource/[name].[ext]'
                         }
                     }
                 ]
@@ -62,9 +68,18 @@ module.exports = {
         ]
     },
     plugins: [
+        // 复制html文件
         new HtmlWebpackPlugin({
             template: './src/index.html'
         }),
-        new ExtractTextPlugin("index.css"),
-    ]
+        // 独立css文件
+        new ExtractTextPlugin("css/[name].css"),
+        // 提取公共模块
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+            filename: 'js/base.js'
+        })
+    ],
+    devServer: {
+    },
 };
