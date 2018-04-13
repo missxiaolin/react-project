@@ -25,7 +25,7 @@ var cssParams = [
 ];
 
 module.exports = {
-    entry: './src/app.jsx',
+    entry: ['./src/app.jsx','./src/viewport.js'],
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
