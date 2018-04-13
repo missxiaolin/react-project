@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clear": "rimraf dist",
     "dev": "node_modules/.bin/webpack-dev-server",
-    "build": "npm run clear && node_modules/.bin/webpack -p"
+    "build": "npm run clear && node_modules/.bin/webpack -p",
+    "lint": "eslint --ext .js --ext .jsx scr/",
+    "precommit": "npm run lint"
   },
   "repository": {
     "type": "git",
