@@ -25,11 +25,11 @@ var cssParams = [
 ];
 
 module.exports = {
-    entry: ['./src/app.jsx','./src/viewport.js'],
+    entry: './src/app.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: 'js/app.js'
+        filename: 'js/[name].[hash].js'
     },
     devServer: {
         // 端口号
