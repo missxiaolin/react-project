@@ -17,17 +17,17 @@
       const hotcssCon = hotcssEl.getAttribute('content')
       if (hotcssCon) {
         // eslint-disable-next-line
-                const initialDprMatch = hotcssCon.match(/initial\-dpr=([\d\.]+)/)
+        const initialDprMatch = hotcssCon.match(/initial\-dpr=([\d\.]+)/)
         if (initialDprMatch) {
           dpr = parseFloat(initialDprMatch[1])
         }
         // eslint-disable-next-line
-                const maxWidthMatch = hotcssCon.match(/max\-width=([\d\.]+)/)
+        const maxWidthMatch = hotcssCon.match(/max\-width=([\d\.]+)/)
         if (maxWidthMatch) {
           maxWidth = parseFloat(maxWidthMatch[1])
         }
         // eslint-disable-next-line
-                const designWidthMatch = hotcssCon.match(/design\-width=([\d\.]+)/)
+        const designWidthMatch = hotcssCon.match(/design\-width=([\d\.]+)/)
         if (designWidthMatch) {
           designWidth = parseFloat(designWidthMatch[1])
         }
@@ -46,7 +46,7 @@
     hotcss.designWidth = designWidth // 保证px2rem 和 rem2px 不传第二个参数时, 获取hotcss.designWidth是undefined导致的NaN
 
     // eslint-disable-next-line
-        let scale = 1 / dpr,
+    let scale = 1 / dpr,
       content = `width=device-width, initial-scale=${scale}, minimum-scale=${scale}, maximum-scale=${scale}, user-scalable=no`
     if (viewportEl) {
       viewportEl.setAttribute('content', content)
