@@ -38,6 +38,14 @@ module.exports = {
     module: {
         rules: [
             {
+                enforce: "pre",
+                test: /\.(jsx|js)$/,
+                loader: 'eslint-loader',
+                exclude: [
+                    path.resolve(__dirname, '../node_modules')
+                ]
+            },
+            {
                 test: /\.(jsx|js)$/,
                 // 不处理
                 exclude: /(node_modules)/,

@@ -6,12 +6,11 @@ import './index.css'
 import './index.scss'
 
 // 使用viewport 或者使用 lib-flexible(响应式布局)
-import 'lib-flexible'
+import 'lib-flexible' // eslint-disable-line
 
 ReactDOM.render(
   <div>
-    <i className="fa fa-address-book"></i>
     <h1>Hello, world!</h1>
   </div>,
-  document.getElementById('app')
-);
+  document.getElementById('app'),
+)
