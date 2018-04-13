@@ -30,15 +30,54 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: "css-loader"
+                    fallback: 'style-loader',
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true, // 压缩
+                                modules: true
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                ident: 'postcss',
+                                plugins: [
+                                    require('autoprefixer')(), // css代码补全
+                                    require('postcss-cssnext')()
+                                ]
+                            }
+                        }
+                    ]
                 })
             },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader', 'sass-loader']
+                    use: [
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                minimize: true, // 压缩
+                                modules: true
+                            }
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: {
+                                ident: 'postcss',
+                                plugins: [
+                                    require('autoprefixer')(), // css代码补全
+                                    require('postcss-cssnext')()
+                                ]
+                            }
+                        },
+                        {
+                            loader: 'sass-loader'
+                        }
+                    ]
                 })
             },
             // 图片
