@@ -1,7 +1,28 @@
 const path = require('path');
+const merge = require('webpack-merge')
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+var cssParams = [
+    {
+        loader: 'css-loader',
+        options: {
+            minimize: true, // 压缩
+            modules: true
+        }
+    },
+    {
+        loader: 'postcss-loader',
+        options: {
+            ident: 'postcss',
+            plugins: [
+                require('autoprefixer')(), // css代码补全
+                require('postcss-cssnext')()
+            ]
+        }
+    }
+];
 
 module.exports = {
     entry: './src/app.jsx',
@@ -31,53 +52,14 @@ module.exports = {
                 test: /\.css$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true, // 压缩
-                                modules: true
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                ident: 'postcss',
-                                plugins: [
-                                    require('autoprefixer')(), // css代码补全
-                                    require('postcss-cssnext')()
-                                ]
-                            }
-                        }
-                    ]
+                    use: cssParams
                 })
             },
             {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true, // 压缩
-                                modules: true
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                ident: 'postcss',
-                                plugins: [
-                                    require('autoprefixer')(), // css代码补全
-                                    require('postcss-cssnext')()
-                                ]
-                            }
-                        },
-                        {
-                            loader: 'sass-loader'
-                        }
-                    ]
+                    use: cssParams.concat([{ loader: 'sass-loader' }])
                 })
             },
             // 图片
