@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/missxiaolin/react-project#readme",
   "dependencies": {
+    "element-react": "^1.4.13",
+    "element-theme-default": "^1.4.13",
     "font-awesome": "^4.7.0",
     "lib-flexible": "^0.3.2",
     "react": "^16.2.0",

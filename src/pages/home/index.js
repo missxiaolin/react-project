@@ -5,6 +5,7 @@ class Home extends Component {
     return (
       <div>
         home
+        <Button type="primary">Hello</Button>
       </div>
     )
   }

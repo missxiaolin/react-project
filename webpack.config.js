@@ -9,7 +9,7 @@ const cssParams = [
     loader: 'css-loader',
     options: {
       minimize: true, // 压缩
-      modules: true,
+      // modules: true,
     },
   },
   {
@@ -34,11 +34,15 @@ module.exports = {
   resolve: {
     alias: {
       pages: path.resolve(__dirname, 'src/pages'),
+      component: path.resolve(__dirname, 'src/component'),
     },
   },
   devServer: {
     // 端口号
-    // props: 8086
+    // props: 8086,
+    historyApiFallback: {
+      index: '/',
+    },
   },
   module: {
     rules: [
