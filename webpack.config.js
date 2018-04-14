@@ -4,13 +4,13 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-var cssParams = [
+const cssParams = [
   {
     loader: 'css-loader',
     options: {
       minimize: true, // 压缩
-      modules: true
-    }
+      modules: true,
+    },
   },
   {
     loader: 'postcss-loader',
@@ -18,18 +18,23 @@ var cssParams = [
       ident: 'postcss',
       plugins: [
         require('autoprefixer')(), // css代码补全
-        require('postcss-cssnext')()
-      ]
-    }
-  }
+        require('postcss-cssnext')(),
+      ],
+    },
+  },
 ]
 
 module.exports = {
-  entry: './src/app.jsx',
+  entry: './src/app.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'js/[name].[hash].js'
+    filename: 'js/[name].[hash].js',
+  },
+  resolve: {
+    alias: {
+      pages: path.resolve(__dirname, 'src/pages'),
+    },
   },
   devServer: {
     // 端口号
@@ -42,8 +47,8 @@ module.exports = {
         test: /\.(jsx|js)$/,
         loader: 'eslint-loader',
         exclude: [
-          path.resolve(__dirname, '../node_modules')
-        ]
+          path.resolve(__dirname, '../node_modules'),
+        ],
       },
       {
         test: /\.(jsx|js)$/,
@@ -52,23 +57,23 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['env', 'react']
-          }
-        }
+            presets: ['env', 'react'],
+          },
+        },
       },
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: cssParams
-        })
+          use: cssParams,
+        }),
       },
       {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: cssParams.concat([{ loader: 'sass-loader' }])
-        })
+          use: cssParams.concat([{ loader: 'sass-loader' }]),
+        }),
       },
       // 图片
       {
@@ -79,10 +84,10 @@ module.exports = {
             options: {
               limit: 8192,
               // 资源文件夹
-              name: 'resource/[name].[ext]'
-            }
-          }
-        ]
+              name: 'resource/[name].[ext]',
+            },
+          },
+        ],
       },
       // 字体
       {
@@ -93,24 +98,24 @@ module.exports = {
             options: {
               limit: 8192,
               // 资源文件夹
-              name: 'resource/[name].[ext]'
-            }
-          }
-        ]
-      }
-    ]
+              name: 'resource/[name].[ext]',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     // 复制html文件
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
     // 独立css文件
     new ExtractTextPlugin('css/[name].css'),
     // 提取公共模块
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
-      filename: 'js/base.js'
-    })
-  ]
+      filename: 'js/base.js',
+    }),
+  ],
 }
