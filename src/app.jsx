@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { HashRouter as Router } from 'react-router-dom'
 
 import 'font-awesome/css/font-awesome.css'
 import './index.scss'
@@ -18,8 +19,10 @@ class App extends Component {
 }
 
 ReactDOM.render(
-  <div>
-    <App />
-  </div>,
+  <Router>
+    <div>
+      <App />
+    </div>
+  </Router>,
   document.getElementById('app'),
 )
