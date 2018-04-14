@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-// import { HashRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 
 import 'font-awesome/css/font-awesome.css'
 import './index.scss'
@@ -14,9 +14,12 @@ import Home from 'pages/home'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Home />
-      </div>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Redirect from="*" to="/" />
+        </Switch>
+      </Router>
     )
   }
 }
