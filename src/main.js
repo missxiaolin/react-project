@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 
 import 'font-awesome/css/font-awesome.css'
 import './index.scss'
@@ -9,22 +9,19 @@ import './index.scss'
 import 'lib-flexible' // eslint-disable-line
 
 // Home
-import Home from 'pages/home'
+import App from 'pages/App.js' // eslint-disable-line
 
-class App extends Component {
+class Main extends Component {
   render() {
     return (
       <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Redirect from="*" to="/" />
-        </Switch>
+        <App />
       </Router>
     )
   }
 }
 
 ReactDOM.render(
-  <App />,
+  <Main />,
   document.getElementById('app'),
 )

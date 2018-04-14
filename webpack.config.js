@@ -25,7 +25,7 @@ const cssParams = [
 ]
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
